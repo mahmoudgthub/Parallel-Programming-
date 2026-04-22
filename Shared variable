@@ -1,0 +1,23 @@
+/* 
+ 
+This program demonstrates a race condition in OpenMP when multiple threads
+modify a shared variable (x) without synchronization. 
+
+*/
+
+#include <iostream>
+#include <omp.h>
+using namespace std;
+
+int main()
+{
+	int x = 0;
+	printf(" Initial x  = %d \n",x );
+
+#pragma omp parallel
+	{
+		x++; // x = 5 
+		printf(" Final x  = %d \n", x );
+	}	
+}
+
