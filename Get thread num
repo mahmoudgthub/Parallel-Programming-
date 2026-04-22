@@ -7,7 +7,9 @@ where each thread prints "Hello, World!" along with its own thread ID.
 [ Starts a parallel region where multiple threads execute the following code simultaneously ] 
 
 printf("Hello,World! %d \n", omp_get_thread_num());
-Prints a message along with the ID of the current thread 
+Prints a message along with the ID of the current thread
+
+// [ %d ] is a format specifier used in printf to display an integer value
 
 */
 
