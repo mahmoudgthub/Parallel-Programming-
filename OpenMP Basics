@@ -1,8 +1,17 @@
-// This program demonstrates the difference between serial and parallel execution using OpenMP.
-// In the serial region, it prints information about threads and processors using a single thread.
-// Then it enters a parallel region where multiple threads run simultaneously,
-// and each thread prints the number of threads, processors, and maximum threads available.
+/* 
 
+This program demonstrates the difference between serial and parallel execution using OpenMP.
+In the serial region, it prints information about threads and processors using a single thread.
+Then it enters a parallel region where multiple threads run simultaneously,
+and each thread prints the number of threads, processors, and maximum threads available.
+
+[ omp_get_thread_num() ] returns the ID of the current thread within a parallel region
+
+[ omp_get_num_procs() ] returns the number of available processor cores on the system
+
+[ omp_get_max_threads() ] returns the maximum number of threads that OpenMP can use in a parallel region
+
+*/
 
 #include<iostream>
 #include <omp.h>
