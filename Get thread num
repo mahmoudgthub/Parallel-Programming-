@@ -1,0 +1,25 @@
+/*
+
+This program uses OpenMP to create multiple threads that run in parallel,
+where each thread prints "Hello, World!" along with its own thread ID.
+ 
+#pragma omp parallel 
+[ Starts a parallel region where multiple threads execute the following code simultaneously ] 
+
+printf("Hello,World! %d \n", omp_get_thread_num());
+Prints a message along with the ID of the current thread 
+
+*/
+
+#include<iostream>
+#include <omp.h>
+using namespace std;
+
+int main()
+{
+#pragma omp parallel
+	{
+		printf("Hello,World! %d \n", omp_get_thread_num());
+	}
+	return 0;
+}
