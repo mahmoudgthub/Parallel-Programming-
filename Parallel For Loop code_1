@@ -1,0 +1,32 @@
+/*
+
+ This program demonstrates OpenMP parallel for loop with ordered execution,
+ where multiple threads process iterations in parallel, but the output section
+ inside "ordered" is executed in a strict sequential order based on loop index.
+
+ [ #pragma omp ordered ]
+			 Ensures that this block is executed in the same order as loop iterations
+
+*/
+
+#include <iostream>
+#include <omp.h>
+using namespace std;
+
+int main()
+{
+
+#pragma omp parallel
+	{
+
+#pragma omp for ordered
+		for (int i = 0; i < 16; i++)
+		{
+
+#pragma omp ordered
+			printf("Num of Thread: %d \n", omp_get_thread_num(), i);
+		}
+	
+	}
+
+}
