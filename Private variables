@@ -1,0 +1,27 @@
+/* 
+
+This program demonstrates the use of "private" variables in OpenMP,
+where each thread gets its own independent copy of the variable (x),
+avoiding race conditions between threads.
+
+*/
+
+#include <iostream>
+#include <omp.h>
+using namespace std;
+
+int main()
+{
+	int x = 0;
+	printf(" Initial x  = %d \n",x );
+
+#pragma omp parallel private (x)
+	{
+		//x = 5;
+
+		x++; //Increments the value of x by 1      
+
+		printf(" Final x  = %d \n", x );
+	}	
+}
+
