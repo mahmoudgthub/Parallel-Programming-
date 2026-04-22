@@ -1,0 +1,40 @@
+/*
+
+ This program demonstrates the difference between OpenMP parallel regions,
+ single region, and master region in terms of thread execution behavior.
+
+[ #pragma omp parallel ]
+
+		 This block is executed by all threads in the parallel region
+
+[ #pragma omp single ]
+		
+		 This block is executed by only one arbitrary thread
+
+[ #pragma omp master ]
+	
+		 This block is executed only by the master thread (thread 0)
+
+*/
+
+#include <iostream>
+#include <omp.h>
+using namespace std;
+
+int main()
+{
+#pragma omp parallel
+	{
+		printf("Parallel Region \n");
+	}
+
+#pragma omp single
+		{
+			printf("Single Region \n");
+		}
+
+#pragma omp master
+		{
+			printf("Master Region \t Num Thread: %d \n", omp_get_thread_num());
+		}
+}
