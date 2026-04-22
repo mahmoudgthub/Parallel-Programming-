@@ -9,7 +9,7 @@ int main()
 {
 #pragma omp parallel
 	{
-		printf("Hello,World : % d \n", omp_get_thread_num());
+		printf("Hello,World! \n");
 	}
 
 	//serial " Hello, World " program
