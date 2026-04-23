@@ -1,0 +1,31 @@
+/*
+
+This program demonstrates the use of "nowait" in OpenMP.
+The first loop uses "nowait", so threads do NOT wait for each other
+before moving to the second loop. The second loop runs with the default
+behavior, where all threads must finish before exiting.
+
+*/
+
+#include <iostream>
+#include <omp.h>
+using namespace std;
+
+int main()
+{
+#pragma omp parallel
+	{
+#pragma omp for nowait
+		for (int i = 0; i < 12; i++) 
+		{
+			printf("Loop_One %d \n",i);
+		}
+
+#pragma omp for
+		for (int i = 0; i < 12; i++)
+		{
+			printf("Loop_Two %d \n",i);
+		}
+	}
+
+}
