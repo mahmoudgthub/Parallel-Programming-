@@ -1,0 +1,29 @@
+/*
+
+ This program demonstrates the use of OpenMP critical section,
+ which ensures that only one thread at a time can access the shared variable (x),
+ preventing race conditions during updates.
+
+ [ #pragma omp critical ] 
+		
+			 Only one thread at a time can execute this block
+*/
+
+#include <iostream>
+#include <omp.h>
+using namespace std;
+
+int main()
+{
+	int x = 0;
+#pragma omp parallel
+	{
+#pragma omp critical
+		{
+			x++;
+			printf("critical thread = %d , and x = %d \n", omp_get_thread_num() , x);
+		}
+
+		printf("Outside thread = %d \n", omp_get_thread_num());
+	}
+}
