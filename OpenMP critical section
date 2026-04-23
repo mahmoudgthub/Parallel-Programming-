@@ -16,6 +16,8 @@ using namespace std;
 int main()
 {
 	int x = 0;
+	float t = omp_get_wtime();
+
 #pragma omp parallel
 	{
 #pragma omp critical
@@ -26,4 +28,8 @@ int main()
 
 		printf("Outside thread = %d \n", omp_get_thread_num());
 	}
+
+	printf("Time %f \n", t);
+
+	return 0;
 }
